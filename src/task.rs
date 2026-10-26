@@ -52,13 +52,13 @@ impl Priority {
     ///   against text literals directly: call `.as_str()` on it first to get a
     ///   `&str` you can match on.
     pub fn parse(s: &str) -> Option<Priority> {
-    match s.to_lowercase().as_str() {
-        "low" => Some(Priority::Low),
-        "medium" => Some(Priority::Medium),
-        "high" => Some(Priority::High),
-        _ => None,
+        match s.to_lowercase().as_str() {
+            "low" => Some(Priority::Low),
+            "medium" => Some(Priority::Medium),
+            "high" => Some(Priority::High),
+            _ => None,
+        }
     }
-}
 }
 
 // This is a worked example, not an exercise. Read it before Exercise 6.
@@ -181,7 +181,11 @@ impl Task {
 impl fmt::Display for Task {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         let checkbox = if self.done { "[x]" } else { "[ ]" };
-        write!(f, "{} {}: {} ({})", checkbox, self.id, self.title, self.priority)
+        write!(
+            f,
+            "{} {}: {} ({})",
+            checkbox, self.id, self.title, self.priority
+        )
     }
 }
 
